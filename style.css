@@ -10,6 +10,9 @@
     --clr-l7: hsla(0, 100%, 100%, 14%);
     --clr-l8: hsla(0, 100%, 100%, 15%);
     --clr-l9: hsla(0, 100%, 100%, 16%);
+    --clr-green: #60ff60;
+    --clr-red: #ff6060;
+    --clr-primary: #60ffff;
     --no-icon: "✖";
     --yes-icon: "✓";
     --display-old-bef: block;
@@ -125,7 +128,7 @@ h1, h2 {
     position: absolute;
     height: max-content;
     padding-right: 13em;
-    Color: lime;
+    Color: var(--clr-green);
 }
 
 .new > label::before {
@@ -145,7 +148,7 @@ h1, h2 {
     position: absolute;
     height: max-content;
     padding-right: 13em;
-    Color: lime;
+    Color: var(--clr-green);;
 }
 
 #spacer {
@@ -164,7 +167,7 @@ footer {
 
 a {
     text-decoration: none;
-    color: lime;
+    color: var(--clr-primary);;
 }
 
 .float-right {

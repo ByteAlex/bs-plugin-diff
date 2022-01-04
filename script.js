@@ -47,14 +47,14 @@ function check() {
     missingFileNames.forEach(missingPlugin => {
         let result = document.createElement("li");
         result.innerText = missingPlugin;
-        result.style.color = "#FF0000";
+        result.style.color = "var(--clr-red)";
         document.getElementById("missing").append(result);
     });
 
     newFileNames.forEach(missingPlugin => {
         let result = document.createElement("li");
         result.innerText = missingPlugin;
-        result.style.color = "#00FF00";
+        result.style.color = "var(--clr-green)";
         document.getElementById("added").append(result);
     });
 }
