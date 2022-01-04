@@ -1,0 +1,147 @@
+:root {
+    --clr-fg: #fff;
+    --clr-bg: #121212;
+    --clr-l1: hsla(0, 100%, 100%, 5%);
+    --clr-l2: hsla(0, 100%, 100%, 7%);
+    --clr-l3: hsla(0, 100%, 100%, 8%);
+    --clr-l4: hsla(0, 100%, 100%, 9%);
+    --clr-l5: hsla(0, 100%, 100%, 11%);
+    --clr-l6: hsla(0, 100%, 100%, 12%);
+    --clr-l7: hsla(0, 100%, 100%, 14%);
+    --clr-l8: hsla(0, 100%, 100%, 15%);
+    --clr-l9: hsla(0, 100%, 100%, 16%);
+    --no-icon: "✖";
+    --yes-icon: "✓";
+    --display-old-bef: block;
+    --display-old-aft: none;
+    --display-new-bef: block;
+    --display-new-aft: none;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background: var(--clr-bg);
+    color: var(--clr-fg);
+}
+
+body div {
+    display: block;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 3rem 0 0 0;
+}
+
+#results_label {
+    display: none;
+}
+
+.plugins * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.old > label::before {
+    content: var(--no-icon);
+    display: var(--display-old-bef);
+    font-size: 1.5em;
+    position: absolute;
+    height: max-content;
+    padding-right: 13em;
+    Color: red;
+}
+
+.old > label::after {
+    content: var(--yes-icon);
+    display: var(--display-old-aft);
+    font-size: 1.5em;
+    position: absolute;
+    height: max-content;
+    padding-right: 13em;
+    Color: lime;
+}
+
+.new > label::before {
+    content: var(--no-icon);
+    display: var(--display-new-bef);
+    font-size: 1.5em;
+    position: absolute;
+    height: max-content;
+    padding-right: 13em;
+    Color: red;
+}
+
+.new > label::after {
+    content: var(--yes-icon);
+    display: var(--display-new-aft);
+    font-size: 1.5em;
+    position: absolute;
+    height: max-content;
+    padding-right: 13em;
+    Color: lime;
+}
+
+
+label, button {
+    background: var(--clr-l1);
+    text-align: center;
+    font-size: 1.2em;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+label:hover, button:hover{
+    background: var(--clr-l4);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+button {
+    margin-top: 1rem;
+    border: none;
+    color: var(--clr-fg);
+    width: 100%;
+}

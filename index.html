@@ -1,75 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>BS Plugins Diff</title>
-</head>
-<body>
-<div id="input">
-    <h2>Input</h2>
-    <div>
-        <label for="plugins_old">Old Plugins Folder</label>
-        <br/>
-        <input type="file" id="plugins_old" name="plugins_old" webkitdirectory directory/>
-    </div>
-    <br/>
-    <div>
-        <label for="plugins_new">New Plugins Folder</label>
-        <br/>
-        <input type="file" id="plugins_new" name="plugins_new" webkitdirectory directory/>
-    </div>
-    <br/>
-    <button id="check" onclick="check()">Check</button>
-    <br/>
-    <hr/>
-    <div>
-        <h2>Results</h2>
-        <ul id="results">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BS Plugin Diff</title>
+        <link rel="shortcut icon" href="https://i.ibb.co/30Q6gLV/beat-saver-logo.png" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div>
+            <h1>Beat Saber Plugin Difference</h1>
+            <div id="input">
+                <h2>Input</h2>
+                <div class="plugins old">
+                    <label for="plugins_old">Old Plugins Folder</label>
+                    <input type="file" id="plugins_old" name="plugins_old"
+                        webkitdirectory directory/>
+                </div>
+                <div class="plugins new">
+                    <label for="plugins_new">New Plugins Folder</label>
+                    <input type="file" id="plugins_new" name="plugins_new"
+                        webkitdirectory directory/>
+                </div>
+                <button id="check" onclick="check()">Check</button>
+                <div>
+                    <h2 id="results_label">Results</h2>
+                    <ul id="results">
 
-        </ul>
-    </div>
-</div>
-<script type="application/javascript">
-    let plugins_old = null;
-    let plugins_new = null;
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-    document.getElementById("plugins_old").addEventListener("change", function (event) {
-        plugins_old = event.target.files;
-    }, false);
-    document.getElementById("plugins_new").addEventListener("change", function (event) {
-        plugins_new = event.target.files;
-    }, false);
-
-    function check() {
-        let missingFileNames = Array.from(plugins_old).map(file => file.name);
-        missingFileNames = missingFileNames.filter(plugin => plugin.endsWith(".dll"));
-
-        Array.from(plugins_new).map(file => file.name)
-            .forEach(plugin => missingFileNames = missingFileNames.filter(oldPlugin => oldPlugin !== plugin));
-
-        let newFileNames = Array.from(plugins_new).map(file => file.name);
-        newFileNames = newFileNames.filter(plugin => plugin.endsWith(".dll"));
-
-        Array.from(plugins_old).map(file => file.name)
-        .forEach(plugin => newFileNames = newFileNames.filter(newPlugin => newPlugin !== plugin));
-
-        document.getElementById("results").innerHTML = "";
-
-        missingFileNames.forEach(missingPlugin => {
-            let result = document.createElement("li");
-            result.innerText = missingPlugin;
-            result.style.color = "#FF0000";
-            document.getElementById("results").append(result);
-        });
-
-        newFileNames.forEach(missingPlugin => {
-            let result = document.createElement("li");
-            result.innerText = missingPlugin;
-            result.style.color = "#00FF00";
-            document.getElementById("results").append(result);
-        });
-    }
-
-</script>
-</body>
+    </body>
 </html>
