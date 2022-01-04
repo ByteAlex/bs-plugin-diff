@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BS Plugins Diff</title>
+</head>
+<body>
+<div id="input">
+    <h2>Input</h2>
+    <div>
+        <label for="plugins_old">Old Plugins Folder</label>
+        <br/>
+        <input type="file" id="plugins_old" name="plugins_old" webkitdirectory directory/>
+    </div>
+    <br/>
+    <div>
+        <label for="plugins_new">New Plugins Folder</label>
+        <br/>
+        <input type="file" id="plugins_new" name="plugins_new" webkitdirectory directory/>
+    </div>
+    <br/>
+    <button id="check" onclick="check()">Check</button>
+    <br/>
+    <hr/>
+    <div>
+        <h2>Results</h2>
+        <ul id="results">
+
+        </ul>
+    </div>
+</div>
+<script type="application/javascript">
+    let plugins_old = null;
+    let plugins_new = null;
+
+    document.getElementById("plugins_old").addEventListener("change", function (event) {
+        plugins_old = event.target.files;
+    }, false);
+    document.getElementById("plugins_new").addEventListener("change", function (event) {
+        plugins_new = event.target.files;
+    }, false);
+
+    function check() {
+        let fileNames = Array.from(plugins_old).map(file => file.name);
+        fileNames = fileNames.filter(plugin => plugin.endsWith(".dll"))
+        Array.from(plugins_new).map(file => file.name)
+            .forEach(plugin => fileNames = fileNames.filter(old => old !== plugin));
+
+        fileNames.forEach(missingPlugin => {
+            let result = document.createElement("li");
+            result.innerText = missingPlugin;
+            document.getElementById("results").append(result);
+        });
+    }
+
+</script>
+</body>
+</html>
