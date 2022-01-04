@@ -54,10 +54,16 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    display: flex;
-    justify-content: center;
+    display: inline;
     background: var(--clr-bg);
     color: var(--clr-fg);
+}
+
+#content {
+    display: block;
+    margin: auto;
+    width: max-content;
+    padding-bottom: 2rem;
 }
 
 body div {
@@ -71,6 +77,10 @@ h1, h2 {
 
 #results_label {
     display: none;
+}
+
+#results {
+    margin-bottom: 5rem;
 }
 
 .plugins * {
@@ -120,6 +130,23 @@ h1, h2 {
     Color: lime;
 }
 
+footer {
+    z-index: 1;
+    width: 100%;
+    background-color: rgb(33, 33, 33);
+    position: fixed;
+    bottom: 0;
+    padding: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: lime;
+}
+
+.float-right {
+    float: right;
+}
 
 label, button {
     background: var(--clr-l1);
