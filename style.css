@@ -75,12 +75,30 @@ h1, h2 {
     margin: 3rem 0 0 0;
 }
 
-#results_label {
+#results_container {
     display: none;
+    margin: auto;
+    width: max-content;
 }
 
-#results {
+#missing {
+    float: left;
+    padding: 2rem;
     margin-bottom: 5rem;
+}
+
+#added {
+    float: right;
+    padding: 2rem;
+    margin-bottom: 5rem;
+}
+
+#results_missing {
+    padding-top: 1rem;
+}
+
+#results_added {
+    padding-top: 1rem;
 }
 
 .plugins * {
@@ -128,6 +146,11 @@ h1, h2 {
     height: max-content;
     padding-right: 13em;
     Color: lime;
+}
+
+#spacer {
+    height: 5rem;
+    width: 100%;
 }
 
 footer {

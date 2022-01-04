@@ -28,7 +28,7 @@ function check() {
         alert("Missing files!");
         return;
     }
-    document.getElementById("results_label").style.display = "block";
+    document.getElementById("results_container").style.display = "block";
     let missingFileNames = Array.from(plugins_old).map(file => file.name);
     missingFileNames = missingFileNames.filter(plugin => plugin.endsWith(".dll"));
 
@@ -41,19 +41,20 @@ function check() {
     Array.from(plugins_old).map(file => file.name)
         .forEach(plugin => newFileNames = newFileNames.filter(newPlugin => newPlugin !== plugin));
 
-    document.getElementById("results").innerHTML = "";
+    document.getElementById("results_missing").innerHTML = "";
+    document.getElementById("results_added").innerHTML = "";
 
     missingFileNames.forEach(missingPlugin => {
         let result = document.createElement("li");
         result.innerText = missingPlugin;
         result.style.color = "#FF0000";
-        document.getElementById("results").append(result);
+        document.getElementById("missing").append(result);
     });
 
     newFileNames.forEach(missingPlugin => {
         let result = document.createElement("li");
         result.innerText = missingPlugin;
         result.style.color = "#00FF00";
-        document.getElementById("results").append(result);
+        document.getElementById("added").append(result);
     });
 }
