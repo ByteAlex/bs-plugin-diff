@@ -42,9 +42,12 @@
 
     function check() {
         let fileNames = Array.from(plugins_old).map(file => file.name);
-        fileNames = fileNames.filter(plugin => plugin.endsWith(".dll"))
+        fileNames = fileNames.filter(plugin => plugin.endsWith(".dll"));
+
         Array.from(plugins_new).map(file => file.name)
             .forEach(plugin => fileNames = fileNames.filter(old => old !== plugin));
+
+        document.getElementById("results").innerHTML = "";
 
         fileNames.forEach(missingPlugin => {
             let result = document.createElement("li");
