@@ -41,17 +41,31 @@
     }, false);
 
     function check() {
-        let fileNames = Array.from(plugins_old).map(file => file.name);
-        fileNames = fileNames.filter(plugin => plugin.endsWith(".dll"));
+        let missingFileNames = Array.from(plugins_old).map(file => file.name);
+        missingFileNames = missingFileNames.filter(plugin => plugin.endsWith(".dll"));
 
         Array.from(plugins_new).map(file => file.name)
-            .forEach(plugin => fileNames = fileNames.filter(old => old !== plugin));
+            .forEach(plugin => missingFileNames = missingFileNames.filter(oldPlugin => oldPlugin !== plugin));
+
+        let newFileNames = Array.from(plugins_new).map(file => file.name);
+        newFileNames = newFileNames.filter(plugin => plugin.endsWith(".dll"));
+
+        Array.from(plugins_old).map(file => file.name)
+        .forEach(plugin => newFileNames = newFileNames.filter(newPlugin => newPlugin !== plugin));
 
         document.getElementById("results").innerHTML = "";
 
-        fileNames.forEach(missingPlugin => {
+        missingFileNames.forEach(missingPlugin => {
             let result = document.createElement("li");
             result.innerText = missingPlugin;
+            result.style.color = "#FF0000";
+            document.getElementById("results").append(result);
+        });
+
+        newFileNames.forEach(missingPlugin => {
+            let result = document.createElement("li");
+            result.innerText = missingPlugin;
+            result.style.color = "#00FF00";
             document.getElementById("results").append(result);
         });
     }
