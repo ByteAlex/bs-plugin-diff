@@ -4,13 +4,23 @@ let root = document.documentElement;
 
 document.getElementById("plugins_old").addEventListener("change", function (event) {
     plugins_old = event.target.files;
+
     root.style.setProperty("--display-old-bef", "none");
     root.style.setProperty("--display-old-aft", "block");
+
+    if (plugins_old != null && plugins_new != null) {
+        check();
+    }
 }, false);
 document.getElementById("plugins_new").addEventListener("change", function (event) {
     plugins_new = event.target.files;
+
     root.style.setProperty("--display-new-bef", "none");
     root.style.setProperty("--display-new-aft", "block");
+
+    if (plugins_old != null && plugins_new != null) {
+        check();
+    }
 }, false);
 
 function check() {
